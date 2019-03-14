@@ -11,8 +11,8 @@ from fastai.vision import *
 # model_file_url = 'https://drive.google.com/open?id=1eEyMgYXIbhyp3gocExUTtYUY2rReWwJy'
 # model_file_name = 'model'
 # classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
-model_file_url = 'https://www.dropbox.com/s/t6g40xwx9ewgysn/stage-2.pth?dl=0'
-model_file_name = 'stage-2.pth'
+export_file_url = 'https://www.dropbox.com/s/t6g40xwx9ewgysn/stage-2.pth?dl=0'
+export_file_name = 'stage-2.pth'
 classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
 path = Path(__file__).parent
 
