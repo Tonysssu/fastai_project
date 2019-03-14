@@ -13,7 +13,7 @@ from fastai.vision import *
 # classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
 model_file_url = 'https://www.dropbox.com/s/t6g40xwx9ewgysn/stage-2.pth?dl=0'
 model_file_name = 'stage-2.pth'
-classes = ['black', 'grizzly', 'teddys']
+classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
 path = Path(__file__).parent
 
 app = Starlette()
