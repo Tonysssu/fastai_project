@@ -11,8 +11,8 @@ from fastai.vision import *
 # model_file_url = 'https://drive.google.com/open?id=1eEyMgYXIbhyp3gocExUTtYUY2rReWwJy'
 # model_file_name = 'model'
 # classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
-model_file_url = 'https://www.dropbox.com/s/y4kl2gv1akv7y4i/stage-2.pth?raw=1'
-model_file_name = 'model'
+model_file_url = 'https://www.dropbox.com/s/t6g40xwx9ewgysn/stage-2.pth?dl=0'
+model_file_name = 'stage-2.pth'
 classes = ['black', 'grizzly', 'teddys']
 path = Path(__file__).parent
 
@@ -26,7 +26,7 @@ async def download_file(url, dest):
         async with session.get(url) as response:
             data = await response.read()
             with open(dest, 'wb') as f: f.write(data)
-
+1
 async def setup_learner():
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
     data_bunch = ImageDataBunch.single_from_classes(path, classes,
