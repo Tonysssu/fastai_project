@@ -12,7 +12,7 @@ from fastai.vision import *
 # model_file_name = 'model'
 # classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
 model_file_url = 'https://www.dropbox.com/s/t6g40xwx9ewgysn/stage-2.pth?dl=0'
-model_file_name = 'model'
+model_file_name = 'stage-2.pth'
 classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
 path = Path(__file__).parent
 
@@ -26,13 +26,26 @@ async def download_file(url, dest):
         async with session.get(url) as response:
             data = await response.read()
             with open(dest, 'wb') as f: f.write(data)
-1
+
+# async def setup_learner():
+#     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
+#     data_bunch = ImageDataBunch.single_from_classes(path, classes,ds_tfms=get_transforms(), size=224).normalize(imagenet_stats)
+#     learn = cnn_learner(data_bunch, models.resnet34, pretrained=False)
+#     learn.load(model_file_name)
+#     return learn
+
 async def setup_learner():
-    await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
-    data_bunch = ImageDataBunch.single_from_classes(path, classes,ds_tfms=get_transforms(), size=224).normalize(imagenet_stats)
-    learn = cnn_learner(data_bunch, models.resnet34, pretrained=False)
-    learn.load(model_file_name)
-    return learn
+    await download_file(export_file_url, path/export_file_name)
+    try:
+        learn = load_learner(path, export_file_name)
+        return learn
+    except RuntimeError as e:
+        if len(e.args) > 0 and 'CPU-only machine' in e.args[0]:
+            print(e)
+            message = "\n\nThis model was trained with an old version of fastai and will not work in a CPU environment.\n\nPlease update the fastai library in your training environment and export your model again.\n\nSee instructions for 'Returning to work' at https://course.fast.ai."
+            raise RuntimeError(message)
+        else:
+            raise
 
 loop = asyncio.get_event_loop()
 tasks = [asyncio.ensure_future(setup_learner())]
