@@ -8,9 +8,12 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-model_file_url = 'https://drive.google.com/open?id=1eEyMgYXIbhyp3gocExUTtYUY2rReWwJy'
+# model_file_url = 'https://drive.google.com/open?id=1eEyMgYXIbhyp3gocExUTtYUY2rReWwJy'
+# model_file_name = 'model'
+# classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
+model_file_url = 'https://www.dropbox.com/s/y4kl2gv1akv7y4i/stage-2.pth?raw=1'
 model_file_name = 'model'
-classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
+classes = ['black', 'grizzly', 'teddys']
 path = Path(__file__).parent
 
 app = Starlette()
