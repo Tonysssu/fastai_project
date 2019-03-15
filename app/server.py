@@ -11,7 +11,7 @@ from fastai.vision import *
 # model_file_url = 'https://drive.google.com/open?id=1eEyMgYXIbhyp3gocExUTtYUY2rReWwJy'
 # model_file_name = 'model'
 # classes = ['anger','sadness','surprise','happyness','natural','disgust','fear']
-export_file_url = 'https://drive.google.com/file/d/16lPez4rklIAGhjGLFHhL3AUGkuvqLYnS/view?usp=sharing'
+export_file_url = 'https://drive.google.com/uc?export=download&id=16lPez4rklIAGhjGLFHhL3AUGkuvqLYnS'
 export_file_name = 'export.pkl'
 classes = ['anger','sadness','surprise','happyness','natural','disgust']
 path = Path(__file__).parent
